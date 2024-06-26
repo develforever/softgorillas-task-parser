@@ -2,8 +2,7 @@
 
 namespace App\Task\Parser;
 
-interface ExecuteInterface {
-
-
+interface ExecuteInterface
+{
     public function execute(Request $request);
 }

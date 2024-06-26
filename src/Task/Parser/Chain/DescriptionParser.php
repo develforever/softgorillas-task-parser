@@ -7,19 +7,10 @@ use App\Task\Model\Inspection;
 
 class DescriptionParser implements ItemParserInterface
 {
-
-    protected $descriptionHashes = [];
-
-    public function processItem($data): array
+    public function processItem($data, $originalData): array
     {
         $out = $data;
         $description = $out['description'];
-        $hash = md5($description);
-
-        if (in_array($hash, $this->descriptionHashes)) {
-            $out['duplicate_description'] = true;
-            return $out;
-        }
 
         $out['class'] = Accident::class;
 
@@ -41,8 +32,6 @@ class DescriptionParser implements ItemParserInterface
                 $out['priority'] = Accident::PRIORITY_HIGH;
             }
         }
-
-        $this->descriptionHashes[] = $hash;
 
         return $out;
     }

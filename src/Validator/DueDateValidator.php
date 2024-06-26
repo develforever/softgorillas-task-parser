@@ -26,7 +26,7 @@ class DueDateValidator extends ConstraintValidator
 
         $parsed = strtotime($value);
 
-        if ($parsed!==false) {
+        if ($parsed !== false) {
             return;
         }
 

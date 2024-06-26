@@ -13,12 +13,11 @@ use Symfony\Component\Validator\Validation;
 
 class DueDateParser implements ItemParserInterface
 {
-
     public function __construct(private LoggerInterface $logger)
     {
     }
 
-    public function processItem($data): array
+    public function processItem($data, $originalData): array
     {
         $out = $data;
         $description = $out['description'];
@@ -50,8 +49,11 @@ class DueDateParser implements ItemParserInterface
 
                 if ($class === Inspection::class) {
                     $out['status'] = Inspection::STATUS_AUTO_SHEDULED;
+                    $out['inspectionDate'] = date('Y-m-d', $parsed);
+                    $out['weekNumber'] = +date('W', $parsed);
                 } elseif ($class === Accident::class) {
                     $out['status'] = Accident::STATUS_DATE_OF_INSPECTION;
+                    $out['serviceVisitDate'] = date('Y-m-d', $parsed);
                 }
             }
         }

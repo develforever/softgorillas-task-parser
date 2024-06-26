@@ -2,6 +2,6 @@
 
 namespace App\Task\Model;
 
-interface ModelInterface {
-    
+interface ModelInterface
+{
 }

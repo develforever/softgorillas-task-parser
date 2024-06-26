@@ -2,7 +2,6 @@
 
 namespace App\Task\Model;
 
-
 /*
 Pola bytu “przegląd”:
 ● opis
@@ -24,8 +23,9 @@ Pola bytu “zgłoszenie awarii”:
 ● data utworzenia
 */
 
-abstract class AbstractModel {
-
+abstract class AbstractModel
+{
+    public $number;
     public $description;
     public $type;
     public $status;

@@ -2,8 +2,8 @@
 
 namespace App\Task\Parser;
 
-class Request {
-
+class Request
+{
     protected $data;
 
     public function __construct(array $data)
@@ -11,7 +11,8 @@ class Request {
         $this->data = $data;
     }
 
-    public function getData(){
+    public function getData()
+    {
         return $this->data;
     }
 }

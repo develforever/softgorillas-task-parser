@@ -6,22 +6,28 @@ use App\Task\Model\ModelInterface;
 
 class Response
 {
+    public const STATUS_OK = 'ok';
+    public const STATUS_FAILED = 'failed';
+    public const STATUS_UNKNOWN = 'unknown';
 
-    const STATUS_OK = 'ok';
-    const STATUS_FAILED = 'failed';
-    const STATUS_UNKNOWN = 'unknown';
-
-    protected ModelInterface $data;
+    protected array $data;
     protected $status;
+    protected $originalData;
 
-    public function __construct(ModelInterface $data, string $status)
+    public function __construct(array $data, string $status, array $originalData)
     {
         $this->data = $data;
         $this->status = $status;
+        $this->originalData = $originalData;
     }
 
-    public function getData(): ModelInterface
+    public function getData(): array
     {
         return $this->data;
+    }
+
+    public function getoriginalData(): array
+    {
+        return $this->originalData;
     }
 }

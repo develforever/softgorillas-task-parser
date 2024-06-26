@@ -4,31 +4,32 @@ namespace App\Task\Parser;
 
 class Result
 {
+    /**
+     *
+     * @var Response[]
+     */
     protected $results = [];
-    protected $accidents;
-    protected $inspections;
-    protected $unknown;
 
-    public function getAccidents(): array
+    /**
+     *
+     *
+     * @param Response[] $items
+     * @return void
+     */
+    public function addResults(array $items)
     {
-        return $this->accidents;
-    }
-
-    public function getInspections(): array
-    {
-        return $this->inspections;
-    }
-
-    public function getUnknown(): array
-    {
-        return $this->unknown;
-    }
-
-    public function addResultItems($items){
         $this->results = $items;
-
-        foreach($this->results as $item){
-            var_dump($item);
-        }
     }
+
+    /**
+     *
+     * @return Response[]
+     */
+    public function getResults()
+    {
+        return $this->results;
+    }
+
+
+
 }
