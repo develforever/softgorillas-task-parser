@@ -8,7 +8,8 @@ class Response
 {
 
     const STATUS_OK = 'ok';
-    const STATUS_FAILED = 'FAILED';
+    const STATUS_FAILED = 'failed';
+    const STATUS_UNKNOWN = 'unknown';
 
     protected ModelInterface $data;
     protected $status;

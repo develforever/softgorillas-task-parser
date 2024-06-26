@@ -3,19 +3,22 @@
 namespace App\Task\Parser;
 
 use App\Task\Parser\Chain\DescriptionParser;
+use App\Task\Parser\Chain\DueDateParser;
 use Psr\Log\LoggerInterface;
 
 class ChainBuilder
 {
 
 
-    public function __construct(private LoggerInterface $logger)
+    public function __construct(private LoggerInterface $logger, private DescriptionParser $descriptionParser, private DueDateParser $dueDateParser)
     {
     }
 
-    public static function build(): Chain
+    public function build(): Chain
     {
         $out = new Chain();
-        return  $out->add(new DescriptionParser());
+        return  $out
+        ->add($this->descriptionParser)
+        ->add($this->dueDateParser);
     }
 }

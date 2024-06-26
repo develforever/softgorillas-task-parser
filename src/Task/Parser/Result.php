@@ -4,19 +4,10 @@ namespace App\Task\Parser;
 
 class Result
 {
-
+    protected $results = [];
     protected $accidents;
     protected $inspections;
-
-    public function setAccidents(array $list)
-    {
-        $this->accidents = $list;
-    }
-
-    public function setInspections(array $list)
-    {
-        $this->inspections = $list;
-    }
+    protected $unknown;
 
     public function getAccidents(): array
     {
@@ -26,5 +17,18 @@ class Result
     public function getInspections(): array
     {
         return $this->inspections;
+    }
+
+    public function getUnknown(): array
+    {
+        return $this->unknown;
+    }
+
+    public function addResultItems($items){
+        $this->results = $items;
+
+        foreach($this->results as $item){
+            var_dump($item);
+        }
     }
 }

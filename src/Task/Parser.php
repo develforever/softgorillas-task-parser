@@ -4,6 +4,7 @@ namespace App\Task;
 
 use App\Task\Parser\ChainBuilder;
 use App\Task\Parser\Request;
+use App\Task\Parser\Response;
 use App\Task\Parser\Result;
 use Psr\Log\LoggerInterface;
 
@@ -20,9 +21,16 @@ class Parser
 
         $chain = $this->builder->build();
 
+        /**
+         * @var Response[]
+         */
+        $responses = [];
+
         for($i=0; $i<count($inputArray); $i++){
-            $chain->execute(new Request($inputArray[$i]));
+            $responses[] = $chain->execute(new Request($inputArray[$i]));
         }
+
+        $out->addResultItems($responses);
 
         return  $out;
     }

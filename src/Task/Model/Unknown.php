@@ -2,6 +2,6 @@
 
 namespace App\Task\Model;
 
-class Unknown implements ModelInterface {
+class Unknown extends AbstractModel implements ModelInterface {
     
 }

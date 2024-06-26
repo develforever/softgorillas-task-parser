@@ -53,6 +53,14 @@ class TaskParser extends Command
         
         $parsedItems = $this->parser->parse($sourceJSON);
 
+        $this->logger->info('Processed items: '.count($sourceJSON));
+
+        $this->logger->info('Accidents: '.count($sourceJSON));
+
+        $this->logger->info('Inspections: '.count($sourceJSON));
+
+        $this->logger->info('Unknown items: '.count($sourceJSON));
+
         $output->writeln('Pass the parameter ' . $input->getArgument('file-name'));
         return Command::FAILURE;
     }

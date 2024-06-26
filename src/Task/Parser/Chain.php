@@ -7,10 +7,14 @@ use App\Task\Parser\Chain\ItemParserInterface;
 
 class Chain implements ExecuteInterface {
 
+    /**
+     * @property ItemParserInterface[] $items
+     */
     protected $items = [];
 
     public function add(ItemParserInterface $parser):self{
 
+        
         $this->items[] = $parser;
         return $this;
     }
@@ -18,6 +22,12 @@ class Chain implements ExecuteInterface {
 
     public function execute(Request $request):Response
     {
-        return new Response(new Unknown, Response::STATUS_OK);
+
+        $data = $request->getData();
+        for($i=0; $i<count($this->items); $i++){
+            $data = $this->items[$i]->processItem($data);
+        }
+
+        return new Response(new Unknown($data), Response::STATUS_OK);
     }
 }
