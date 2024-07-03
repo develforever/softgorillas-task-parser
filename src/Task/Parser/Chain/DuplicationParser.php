@@ -2,9 +2,6 @@
 
 namespace App\Task\Parser\Chain;
 
-use App\Task\Model\Accident;
-use App\Task\Model\Inspection;
-
 class DuplicationParser implements ItemParserInterface
 {
     protected $descriptionHashes = [];

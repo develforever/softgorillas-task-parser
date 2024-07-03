@@ -34,3 +34,10 @@ docker-compose run php symfony console app:task-parser recruitment-task-source
 ```
 php symfony console app:task-parser recruitment-task-source
 ```
+
+
+## PHPCS Fixer
+
+```
+tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src --rules=no_unused_imports,@PSR12
+```

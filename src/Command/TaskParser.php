@@ -2,7 +2,6 @@
 
 namespace App\Command;
 
-use App\Task\Model\Inspection;
 use App\Task\Parser;
 use App\Task\Parser\InstanceFactory;
 use App\Task\Model\Accident\Enum as AccidentEnum;

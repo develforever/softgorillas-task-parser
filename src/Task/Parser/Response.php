@@ -2,8 +2,6 @@
 
 namespace App\Task\Parser;
 
-use App\Task\Model\ModelInterface;
-
 class Response
 {
     public const STATUS_OK = 'ok';

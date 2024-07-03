@@ -6,7 +6,6 @@ use App\Task\Parser\Chain\AdditionalInfoParser;
 use App\Task\Parser\Chain\DescriptionParser;
 use App\Task\Parser\Chain\DueDateParser;
 use App\Task\Parser\Chain\DuplicationParser;
-use App\Task\Parser\Chain\MakeInstance;
 use App\Task\Parser\Chain\TypeParser;
 use Psr\Log\LoggerInterface;
 
