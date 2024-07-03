@@ -8,6 +8,8 @@ use App\Task\Model\Inspection;
 use App\Task\Model\ModelInterface;
 use Exception;
 use Psr\Log\LoggerInterface;
+use App\Task\Model\Accident\Enum as AccidentEnum;
+use App\Task\Model\Inspection\Enum as InspectionEnum;
 
 class InstanceFactory
 {
@@ -56,7 +58,7 @@ class InstanceFactory
 
     /**
      *
-     * @param Accident::TYPE|Inspection::TYPE $type
+     * @param AccidentEnum::TYPE|InspectionEnum::TYPE $type
      * @param AbstractModel[] $models
      * @return AbstractModel[]
      */

@@ -5,6 +5,8 @@ namespace App\Task\Parser\Chain;
 use App\Task\Model\Accident;
 use App\Task\Model\Inspection;
 use Psr\Log\LoggerInterface;
+use App\Task\Model\Accident\Enum as AccidentEnum;
+use App\Task\Model\Inspection\Enum as InspectionEnum;
 
 class TypeParser implements ItemParserInterface
 {
@@ -18,9 +20,9 @@ class TypeParser implements ItemParserInterface
         $class = array_key_exists('class', $out) ? $out['class'] : null;
 
         if ($class === Accident::class) {
-            $out['type'] = Accident::TYPE;
+            $out['type'] = AccidentEnum::TYPE->value;
         } elseif ($class === Inspection::class) {
-            $out['type'] = Inspection::TYPE;
+            $out['type'] = InspectionEnum::TYPE->value;
         }
 
         return $out;

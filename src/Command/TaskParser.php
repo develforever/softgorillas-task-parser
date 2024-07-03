@@ -2,10 +2,11 @@
 
 namespace App\Command;
 
-use App\Task\Model\Accident;
 use App\Task\Model\Inspection;
 use App\Task\Parser;
 use App\Task\Parser\InstanceFactory;
+use App\Task\Model\Accident\Enum as AccidentEnum;
+use App\Task\Model\Inspection\Enum as InspectionEnum;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -60,8 +61,8 @@ class TaskParser extends Command
 
         $models =  $this->instanceFactory->makeInstances($parsedItems);
 
-        $accidents = $this->instanceFactory->getByType(Accident::TYPE, $models);
-        $inspections = $this->instanceFactory->getByType(Inspection::TYPE, $models);
+        $accidents = $this->instanceFactory->getByType(AccidentEnum::TYPE->value, $models);
+        $inspections = $this->instanceFactory->getByType(InspectionEnum::TYPE->value, $models);
         $duplications = $this->instanceFactory->getByField('duplicate', true, $parsedItems->getResults());
 
         $dest = $path . '/data/'.$input->getArgument('file-name').'-accidents.json';

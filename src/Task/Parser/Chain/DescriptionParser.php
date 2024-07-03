@@ -4,6 +4,8 @@ namespace App\Task\Parser\Chain;
 
 use App\Task\Model\Accident;
 use App\Task\Model\Inspection;
+use App\Task\Model\Accident\Enum as AccidentEnum;
+use App\Task\Model\Inspection\Enum as InspectionEnum;
 
 class DescriptionParser implements ItemParserInterface
 {
@@ -20,16 +22,16 @@ class DescriptionParser implements ItemParserInterface
 
         if (strpos($description, 'bardzo pilne') !== false) {
             if ($out['class'] === Inspection::class) {
-                $out['priority'] = Inspection::PRIORITY_URGENT;
+                $out['priority'] = InspectionEnum::PRIORITY_URGENT->value;
             } elseif ($out['class'] === Accident::class) {
-                $out['priority'] = Accident::PRIORITY_URGENT;
+                $out['priority'] = AccidentEnum::PRIORITY_URGENT->value;
             }
         }
         if (strpos($description, 'pilne') !== false) {
             if ($out['class'] === Inspection::class) {
-                $out['priority'] = Inspection::PRIORITY_HIGH;
+                $out['priority'] = InspectionEnum::PRIORITY_HIGH->value;
             } elseif ($out['class'] === Accident::class) {
-                $out['priority'] = Accident::PRIORITY_HIGH;
+                $out['priority'] = AccidentEnum::PRIORITY_HIGH->value;
             }
         }
 

@@ -6,10 +6,9 @@ use App\Task\Model\Accident;
 use App\Task\Model\Inspection;
 use App\Validator\DueDate;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\Validator\Constraints\Date;
-use Symfony\Component\Validator\Constraints\DateTime;
-use Symfony\Component\Validator\Constraints\Time;
 use Symfony\Component\Validator\Validation;
+use App\Task\Model\Accident\Enum as AccidentEnum;
+use App\Task\Model\Inspection\Enum as InspectionEnum;
 
 class DueDateParser implements ItemParserInterface
 {
@@ -37,9 +36,9 @@ class DueDateParser implements ItemParserInterface
 
 
         if ($class === Inspection::class) {
-            $out['status'] = Inspection::STATUS_NEW;
+            $out['status'] = InspectionEnum::STATUS_NEW->value;
         } elseif ($class === Accident::class) {
-            $out['status'] = Accident::STATUS_NEW;
+            $out['status'] = AccidentEnum::STATUS_NEW->value;
         }
 
         if ($dueDate) {
@@ -48,11 +47,11 @@ class DueDateParser implements ItemParserInterface
                 $out['dueDateParsed'] = date('Y-m-d H:i:s', $parsed);
 
                 if ($class === Inspection::class) {
-                    $out['status'] = Inspection::STATUS_AUTO_SHEDULED;
+                    $out['status'] = InspectionEnum::STATUS_AUTO_SHEDULED->value;
                     $out['inspectionDate'] = date('Y-m-d', $parsed);
                     $out['weekNumber'] = +date('W', $parsed);
                 } elseif ($class === Accident::class) {
-                    $out['status'] = Accident::STATUS_DATE_OF_INSPECTION;
+                    $out['status'] = AccidentEnum::STATUS_DATE_OF_INSPECTION->value;
                     $out['serviceVisitDate'] = date('Y-m-d', $parsed);
                 }
             }
